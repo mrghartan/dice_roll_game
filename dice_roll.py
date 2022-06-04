@@ -1,6 +1,4 @@
-game_steps=5
-game_players=5
-win_no="max"
+
 import random
 def dice_roll(game_steps, game_players,win_no="max"):
     '''game_steps= how many times to roll a dice
@@ -36,4 +34,23 @@ def dice_roll(game_steps, game_players,win_no="max"):
     elif df["max_count"].count(win_no)==1 :
         df["winner"][df['max_count'].index([win_no])]=1
     return df
-print(dice_roll(game_steps,game_players))
+# print(dice_roll(game_steps,game_players))
+def main():
+    print("Number of rounds")
+    game_steps=int(input())
+    print("number of players")
+    game_players=int(input())
+    print("want to assign winning number type y else n")
+    want_to_assign_win_no=input()
+    if want_to_assign_win_no.lower()=='y':
+        print('winning Number')
+        win_no=int(input())
+    else:
+        win_no="max"
+    dc=dice_roll(game_steps, game_players,win_no)
+    print(dc)
+    print(dc['players'][dc['winner'].index(1)])
+if __name__=='__main__':
+    main()
+    
+
